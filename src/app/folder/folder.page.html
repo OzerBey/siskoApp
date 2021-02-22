@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>SiskoApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">SiskoApp</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+<!--bilgi kartı -->
+<ion-card  color="tertiary">
+  <ion-card-header>
+    <ion-card-title color="warning">Vücut kitle indeksini hesapla</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+   Lütfen aşağıdaki bilgileri istenilen şekilde doldurunuz.
+  </ion-card-content>
+</ion-card>
+
+<!--boy range-->
+<ion-item>
+  <ion-range min="20" max="220" color="danger" [(ngModel)]="boy" (ionChange)=hesapla(boy,kilo)>
+    <ion-icon name="speedometer-outline"></ion-icon>
+    <ion-label slot="start"><ion-icon name="accessibility-outline"></ion-icon></ion-label>
+    <ion-label slot="end">{{boy}} cm</ion-label>
+  </ion-range>
+</ion-item>
+
+<!--kilo range-->
+<ion-item >
+  <ion-range min="10" max="220" color="danger" [(ngModel)]="kilo" (ionChange)=hesapla(boy,kilo) >
+    <ion-label slot="start"><ion-icon name="speedometer-outline"></ion-icon></ion-label>
+    <ion-label slot="end">{{kilo}} Kg</ion-label>
+  </ion-range>
+</ion-item>
+
+
+
+
+
+<!--bilgi kartı -->
+
+<ion-card class="{{sonuc>35 ? 'animate__animated animate__jello': ''}}">
+  <ion-card-header>
+    <ion-card-subtitle>VKİ Sonucu</ion-card-subtitle>
+    <ion-card-title color="warning">{{sonuc>0 ? (sonuc|number:0):'00.00'}}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    {{(sonuc<20 ? 'ZAYIF': sonuc<25 ? 'NORMAL' :sonuc<30 ? 'HAFİF ŞİŞMAN' :sonuc <35 ? 'ŞİŞMAN':'OBEZ')}}
+  </ion-card-content>
+</ion-card>
+
+
+<img  src="https://i.pinimg.com/originals/47/03/09/4703093a70ba47001bf2c86319aae091.gif">
+</ion-content>
